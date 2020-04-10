@@ -1,0 +1,36 @@
+<mat-sidenav-container>
+    <!-- Sidenav -->
+    <mat-sidenav id="sidenav" #sidenav class="mat-elevation-z4" [mode]="isBiggerScreen() ? 'over' : 'side'"
+        [opened]="opened">
+        <mat-accordion class="menuAccordion" multi="true">
+            <mat-expansion-panel class="mat-elevation-z0" *ngFor="let menu of menus; let i = index;"
+                [expanded]="i === expandedIndex" #panel (mouseenter)="mouseEnter(i, panel)" (mouseleave)="mouseLeave(i, panel)"
+                (click)="onclick(i, panel)">
+                <mat-expansion-panel-header class="clsExpansionPanel" [collapsedHeight]="'36px'"
+                    [expandedHeight]="'36px'">
+                    <mat-icon>{{menu.menuMatIcon}}</mat-icon> {{menu.menuName}}
+                </mat-expansion-panel-header>
+                <a *ngFor="let menuLink of menu.menuLinks" mat-button routerLink="{{menuLink.link}}"
+                    routerLinkActive="active-list-item">
+                    {{menuLink.linkName}}
+                </a>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </mat-sidenav>
+
+    <mat-sidenav id="settigs" #settingsSidenav position="end" opened="false" class="mat-elevation-z4">
+        <div class="settingsTitle mat-elevation-z1" id="title">הגדרות כלליות</div>
+        <div class="lineWrapper">
+            <mat-slide-toggle [checked]="themeService.isDarkTheme | async" (change)="toggleDarkTheme($event.checked)" labelPosition="before">
+                <label>
+                    <mat-icon>color_lens</mat-icon>ערכת נושא כהה
+                </label>
+            </mat-slide-toggle>
+        </div>
+    </mat-sidenav>
+
+    <!-- Main content -->
+    <mat-sidenav-content style="height: calc(100% - 50px);">
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

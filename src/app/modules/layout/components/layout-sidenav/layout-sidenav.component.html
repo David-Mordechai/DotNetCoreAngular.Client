@@ -1,0 +1,7 @@
+<div style="height: 100%;">
+    <app-header-toolbar (sidenavToggle)="sidenav.onToggleSideNav('')"
+        (settingsSidenavToggle)="sidenav.onToggleSideNav('settings')">
+    </app-header-toolbar>
+
+    <app-sidenav (changeTheme)="toogleTheme()" #sidenav></app-sidenav>
+</div>

@@ -1,0 +1,40 @@
+@import "theme.scss";
+
+.regester-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  padding-top: 50px;
+}
+
+.regester-card {
+  max-width: 500px;
+  width: 500px;
+  min-width: 500px;
+}
+
+.regester-header-image {
+  background-image: url("/assets/Images/elephant-icon.png");
+  background-size: contain;
+  padding: 3px;
+}
+
+.mat-raised-button, a {
+  display: inline-block;
+  width: 100%;
+  vertical-align: middle;
+  margin-bottom: 10px;
+}
+
+mat-form-field {
+  min-width: 48%;
+}
+
+form {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-flow: row wrap;
+  align-content: center;
+}

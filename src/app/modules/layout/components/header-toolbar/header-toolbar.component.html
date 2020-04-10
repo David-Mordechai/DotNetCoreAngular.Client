@@ -1,0 +1,29 @@
+<!-- Toolbar -->
+<mat-toolbar color="primary" class="header mat-elevation-z4">
+
+  <div class="appName">
+    <img src="/assets/Images/elephant-icon.png" style="color:white; width: 40px; height: 40px;" alt="" srcset="">
+    <span id="appNameSpan">המערכת</span>
+
+  </div>
+
+  <div class="header-actions-wrapper">
+
+    <button class="hamburger" mat-mini-fab (click)="onToggleSidenav()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span style="display: flex;align-items: center;">
+      <mat-icon>person</mat-icon><span style="height: 27px;font-size: 16px;">{{userFullName}}</span>
+    </span>
+
+    <span class="headerIcons">
+      <button mat-mini-fab (click)="logout()">
+        <mat-icon>power_settings_new</mat-icon>
+      </button>
+      <button mat-mini-fab (click)="onToggleSettingsSidenav()">
+        <mat-icon>settings</mat-icon>
+      </button>
+    </span>
+  </div>
+
+</mat-toolbar>

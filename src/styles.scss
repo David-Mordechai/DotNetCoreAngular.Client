@@ -1,0 +1,51 @@
+@import '~material-design-icons/iconfont/material-icons.css';
+
+html,
+body {
+  height: calc(100% - 32px);
+  direction: rtl;
+}
+
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+.pageHeader {
+  margin: 0 0 20px 0;
+  font-size: 1.2em;
+}
+
+.mat-form-field,
+.mat-form-field-label {
+  font-size: 16px !important;
+}
+
+table.mat-table,
+table {
+  width: 100%;
+}
+
+.mat-snack-bar-container.success {
+  background-color:#2e7d32;
+  color: white;
+}
+
+.mat-simple-snackbar {
+  font-size: 16px !important;
+  line-height: normal !important;
+}
+
+::-webkit-scrollbar{
+  width: 10px;
+  height: 10px;
+  padding: 2px;
+}
+
+::-webkit-scrollbar-track{
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb{
+  border-radius: 2px;
+}

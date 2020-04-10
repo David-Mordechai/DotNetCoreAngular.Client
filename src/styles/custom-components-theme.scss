@@ -1,0 +1,82 @@
+@import "~@angular/material/theming";
+
+@mixin custom-components-theme($theme) {
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    $warn: map-get($theme, warn);
+    
+    ::-webkit-scrollbar-track{
+        box-shadow: inset 0 0 2px rgba(mat-color($accent), 0.5);
+    }
+
+    ::-webkit-scrollbar-thumb{
+        background-color: mat-color($accent);
+    }
+
+    .login-header-image {
+        background-color: mat-color($primary);
+    }
+
+    .regester-header-image {
+        background-color: mat-color($primary);
+    }
+
+    .mat-expansion-panel.mat-expanded {
+        border-bottom: 1px solid rgba(mat-color($accent), 0.3);
+    }
+        
+    .menuAccordion .mat-expansion-panel-body {
+        background-color: rgba(mat-color($accent), 0.09);
+    }
+
+    .mat-expansion-panel-header.mat-expanded,
+    .mat-expansion-panel-header.mat-expanded:hover,
+    .mat-expansion-panel-header.mat-expanded:focus {
+        background-color: mat-color($accent);
+        color: white;
+    }
+
+    .mat-expansion-panel .mat-expansion-panel-header {
+        &:not([aria-disabled="true"]) {
+          &.cdk-keyboard-focused,
+          &.cdk-program-focused{
+            background-color: mat-color($accent);
+            color: white;
+          }
+        }
+    }
+
+    .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header {
+        &:not([aria-disabled="true"]) {
+          &.cdk-keyboard-focused,
+          &.cdk-program-focused,
+          &:hover {
+            color: currentColor;
+            background-color: transparent;
+          }
+        }
+    }
+
+    .mat-expansion-panel.mat-expanded .clsExpansionPanel > .mat-expansion-indicator::after {
+        color: white;
+    }
+
+    .mat-expansion-panel:not(.mat-expanded) .clsExpansionPanel > .mat-expansion-indicator::after {
+        color: currentColor;
+    }
+
+    .mat-expansion-panel-header.cdk-keyboard-focused,
+    .mat-tab-label.cdk-keyboard-focused,
+    .mat-tab-link.cdk-keyboard-focused {
+        background-color: mat-color($accent) !important;
+        color: white !important;
+    }
+
+    .settingsTitle {
+        background-color: mat-color($accent);
+    }
+
+    .active-list-item {
+        color: mat-color($accent);
+    }
+}

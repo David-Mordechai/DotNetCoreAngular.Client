@@ -1,0 +1,99 @@
+@import "theme.scss";
+
+#settigs {
+  padding: 0;
+  margin: 0;
+}
+
+#settigs #title {
+  font-size: 18px;
+  padding: 10px;
+  margin: 0;
+  color: white;
+}
+
+#settigs label {
+  height: inherit;
+  display: flex;
+  font-size: 18px;
+  padding-right: 10px;
+}
+
+.example-radio-button {
+  margin: 10px 25px;
+}
+
+mat-sidenav mat-icon {
+  margin-left: 12px;
+}
+
+.menuAccordion .mat-expansion-panel-spacing {
+  margin: 0;
+}
+
+.menuAccordion .mat-expansion-panel {
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+}
+
+.menuAccordion ::ng-deep .mat-expansion-panel-body {
+  padding: 0;
+  border-radius: 0;
+}
+
+.menuAccordion {
+  padding: 0;
+  border: none;
+}
+
+::ng-deep .mat-content {
+  align-items: center;
+}
+
+.mat-expansion-panel-header {
+  border-radius: 0;
+  padding: 0 12px;
+}
+
+.mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header {
+  &:not([aria-disabled="true"]) {
+    &.cdk-keyboard-focused,
+    &.cdk-program-focused,
+    &:hover {
+      border-radius: 0;
+    }
+  }
+}
+
+.menuAccordion a.mat-button {
+  width: 100%;
+  text-align: right;
+  padding-right: 20px;
+}
+
+.active-list-item {
+  font-weight: bold;
+}
+
+.mat-sidenav-container {
+  height: 100%;
+  display: flex;
+  flex: 1 1 auto;
+}
+
+.mat-sidenav-content {
+  padding: 25px 25px;
+  width: 100%;
+}
+
+.mat-sidenav {
+  padding: 0;
+  
+  border: none;
+}
+
+.mat-sidenav {
+  min-width: 230px;
+  width: 230px;
+}

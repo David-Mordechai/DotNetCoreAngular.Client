@@ -1,0 +1,58 @@
+.appName{
+  display: flex;
+  align-items: center;
+}
+
+#appNameSpan{
+  align-items: center;
+  font-size: 32px;
+  min-width: 150px; 
+  width: 150px;
+  max-width: 150px;
+  height: 100%;
+  line-height: 30px;
+  padding: 0 10px;
+  margin-bottom: 5px;
+}
+
+.hamburger {
+  margin: 0 10px 0 10px;
+}
+
+.header {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-actions-wrapper{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.header-actions-wrapper button{
+  margin: 0 3px 0 3px;
+}
+
+.headerIcons {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  #appNameSpan {
+    display: none;
+  }
+}
+
+@media (max-width: 599px) {
+  .mat-toolbar-row,
+  .mat-toolbar-single-row {
+    height: 64px !important;
+  }
+}

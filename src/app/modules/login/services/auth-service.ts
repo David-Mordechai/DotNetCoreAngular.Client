@@ -38,7 +38,7 @@ export class AuthService {
     }
 
     logout() {
-        return this.http.post<any>(`${config.apiUrl}/token/revoke`, null).pipe(
+        return this.http.post<any>(`${config.apiUrl}/account/revoke`, null).pipe(
             tap(() => this.doLogoutUser()),
             mapTo(true),
             catchError(error => {
@@ -52,7 +52,7 @@ export class AuthService {
     }
 
     refreshToken() {
-        return this.http.post<any>(`${config.apiUrl}/token/refresh`, {
+        return this.http.post<any>(`${config.apiUrl}/account/refresh`, {
             'token': this.getJwtToken(),
             'refreshToken': this.getRefreshToken()
         }).pipe(tap((tokens: Tokens) => {

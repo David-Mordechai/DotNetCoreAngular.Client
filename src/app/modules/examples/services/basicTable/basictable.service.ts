@@ -7,7 +7,7 @@ import { PeriodicElement } from '../../models/periodicElement';
 })
 export class BasictableService {
 
-  readonly BaseURI = 'http://localhost:5000/api';
+  readonly BaseURI = 'https://localhost:5001/api';
 
   constructor(private http: HttpClient) { }
 

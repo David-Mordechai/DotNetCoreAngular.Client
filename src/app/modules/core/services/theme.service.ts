@@ -14,8 +14,11 @@ export class ThemeService {
 
   constructor(private _http: HttpClient) { }
 
-  getThemeType(){
-    this.getUserTheme().subscribe((data) =>{
+  getThemeType() {
+    this.getUserTheme().subscribe((data) => {
+      let getLoginTheme = this.getLoginTheme();
+      if (data !== getLoginTheme)
+        data = getLoginTheme;
       this._darkTheme.next(data === 1 ? true : false);
     });
   }
@@ -26,12 +29,17 @@ export class ThemeService {
     this._darkTheme.next(isDarkTheme);
   }
 
-  getUserTheme(): Observable<number>{
+  getUserTheme(): Observable<number> {
     return this._http.get<number>(`${this.URL}usersettings/getusertheme`);
+  }
+
+  getLoginTheme() {
+    return localStorage.getItem('isLoginDarkTheme') === "1" ? 1 : 0;
   }
 
   saveUserTheme(isDarkTheme: number): Observable<boolean> {
     const themeType = isDarkTheme ? 1 : 0;
+    localStorage.setItem('isLoginDarkTheme', `${themeType}`);
     return this._http.post<boolean>(`${this.URL}userSettings/saveusertheme`, themeType);
   }
 }

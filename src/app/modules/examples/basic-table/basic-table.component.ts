@@ -18,11 +18,10 @@ export class BasicTableComponent implements OnInit {
 
   ngOnInit() {
     this.basictableService.getData().subscribe((data) => {
-      setTimeout(() => { 
-        this.isLoading = false; 
+      setTimeout(() => {
+        this.isLoading = false;
         this.dataSource.data = data;
       }, 500);
-      
     },
       error => setTimeout(() => { this.isLoading = false; }, 500)
     );

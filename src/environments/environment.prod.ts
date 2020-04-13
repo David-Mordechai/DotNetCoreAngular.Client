@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  baseApiUrl: 'https://localhost/DotNetCoreAngular.WebApi/api/'
+  baseApiUrl: 'https://davidmordechai.com/DotNetCoreAngular.WebApi/api/'
 };

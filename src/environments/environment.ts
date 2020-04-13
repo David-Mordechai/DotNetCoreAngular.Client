@@ -5,6 +5,8 @@
 export const environment = {
   production: false,
   baseApiUrl: 'https://localhost:5001/api/'
+  // baseApiUrl: 'https://localhost/api/'
+  // baseApiUrl: 'https://davidmordechai.com/DotNetCoreAngular.WebApi/api/'
 };
 
 /*

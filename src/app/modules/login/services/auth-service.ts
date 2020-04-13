@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { of, Observable } from 'rxjs';
 import { catchError, mapTo, tap } from 'rxjs/operators';
 import { Tokens } from '../models/tokens';
-import { config } from 'src/app/config';
 import { RegisterModel } from '../models/register-model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
     providedIn: 'root'
@@ -14,10 +14,12 @@ export class AuthService {
     private readonly JWT_TOKEN = 'JWT_TOKEN';
     private readonly REFRESH_TOKEN = 'REFRESH_TOKEN';
 
+    private URL: string = environment.baseApiUrl
+
     constructor(private http: HttpClient) { }
 
     register(registerModel: RegisterModel) {
-        return this.http.post<any>(`${config.apiUrl}/account/signup`, registerModel)
+        return this.http.post<any>(`${this.URL}account/signup`, registerModel)
             .pipe(
                 mapTo(true),
                 catchError(error => {
@@ -27,7 +29,7 @@ export class AuthService {
     }
 
     login(user: { username: string, password: string }): Observable<boolean> {
-        return this.http.post<any>(`${config.apiUrl}/account/login`, user)
+        return this.http.post<any>(`${this.URL}account/login`, user)
             .pipe(
                 tap(tokens => this.doLoginUser(tokens)),
                 mapTo(true),
@@ -38,7 +40,7 @@ export class AuthService {
     }
 
     logout() {
-        return this.http.post<any>(`${config.apiUrl}/account/revoke`, null).pipe(
+        return this.http.post<any>(`${this.URL}account/revoke`, null).pipe(
             tap(() => this.doLogoutUser()),
             mapTo(true),
             catchError(error => {
@@ -52,7 +54,7 @@ export class AuthService {
     }
 
     refreshToken() {
-        return this.http.post<any>(`${config.apiUrl}/account/refresh`, {
+        return this.http.post<any>(`${this.URL}account/refresh`, {
             'token': this.getJwtToken(),
             'refreshToken': this.getRefreshToken()
         }).pipe(tap((tokens: Tokens) => {
@@ -61,15 +63,15 @@ export class AuthService {
     }
 
     getUserDetails(): Observable<any> {
-        return this.http.get<any>(`${config.apiUrl}/account/getuserdetails`);
+        return this.http.get<any>(`${this.URL}account/getuserdetails`);
     }
 
     isUsernameUnique(value: string): Observable<boolean> {
-        return this.http.get<any>(`${config.apiUrl}/account/isUsernameUnique?username=${value}`);
+        return this.http.get<any>(`${this.URL}account/isUsernameUnique?username=${value}`);
     }
 
     isEmailUnique(value: string): Observable<boolean> {
-        return this.http.get<any>(`${config.apiUrl}/account/isEmailUnique?email=${value}`);
+        return this.http.get<any>(`${this.URL}account/isEmailUnique?email=${value}`);
     }
 
     getJwtToken() {

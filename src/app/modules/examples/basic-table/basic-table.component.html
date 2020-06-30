@@ -32,7 +32,7 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
 
-<mat-card *ngIf="isLoading" style="display: flex; justify-content: center; align-items: center">
+<mat-card class="cardProgress" *ngIf="isLoading">
   <mat-progress-bar color="primary" mode="indeterminate">
   </mat-progress-bar>
 </mat-card>

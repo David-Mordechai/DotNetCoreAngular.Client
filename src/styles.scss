@@ -1,5 +1,4 @@
-@import '~material-design-icons/iconfont/material-icons.css';
-
+@import 'material-icons/iconfont/material-icons.css';
 html,
 body {
   height: calc(100% - 32px);
@@ -49,3 +48,5 @@ table {
 ::-webkit-scrollbar-thumb{
   border-radius: 2px;
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

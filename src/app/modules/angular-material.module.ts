@@ -91,7 +91,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
       MatSlideToggleModule
    ],
    providers: [
-      MatDatepickerModule,
+      MatDatepickerModule
    ]
 })
 

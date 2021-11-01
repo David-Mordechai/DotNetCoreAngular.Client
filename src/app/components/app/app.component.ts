@@ -36,4 +36,10 @@ export class AppComponent {
       }
     });
   }
+  reload(){
+    debugger;
+    console.log('reloading')
+    this.themeService._update.next(false);
+    console.log(this.themeService.appUpdate);
+  }
 }

@@ -11,7 +11,7 @@ export class ThemeService {
   private _darkTheme = new Subject<boolean>();
   isDarkTheme = this._darkTheme.asObservable();
 
-  private _update = new Subject<boolean>();
+  _update = new Subject<boolean>();
   appUpdate = this._update.asObservable();
 
   private URL: string = environment.baseApiUrl

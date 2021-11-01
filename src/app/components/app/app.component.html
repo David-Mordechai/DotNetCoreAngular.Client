@@ -1,4 +1,5 @@
 <div class="mainWrapper" [ngClass]="{'dark-theme': isDarkTheme | async, 'light-theme': !(isDarkTheme | async)}" >
+    <span *ngIf="update | async">קיים עדכון למערכת, יש לרענן את הדף!!!</span>
     <app-login-layout *ngIf="!authService.isLoggedIn()"></app-login-layout>
     <app-layout-sidenav *ngIf="authService.isLoggedIn()" class="mat-app-background"></app-layout-sidenav>
 </div>

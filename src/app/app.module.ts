@@ -15,6 +15,8 @@ import { ExamplesModule } from './modules/examples/examples.module';
 import { TokenInterceptor } from './modules/login/auth/token.interceptor';
 import { DatePipe } from '@angular/common';
 import { DateFormatHe } from './general/date-format-he';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,13 @@ import { DateFormatHe } from './general/date-format-he';
     LayoutModule,
     LoginModule,
     HttpClientModule,
-    ExamplesModule
+    ExamplesModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerImmediately'
+    })
   ],
   providers: [
     DatePipe,

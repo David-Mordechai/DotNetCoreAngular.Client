@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { AuthService } from 'src/app/modules/login/services/auth-service';
-import { Observable, Subject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { ThemeService } from 'src/app/modules/core/services/theme.service';
 import { OverlayContainer } from '@angular/cdk/overlay';
-import { SwUpdate } from '@angular/service-worker';
+import { CheckForUpdateService } from 'src/app/modules/core/services/UpdateService/check-for-update.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -14,17 +15,18 @@ import { SwUpdate } from '@angular/service-worker';
 export class AppComponent {
 
   isDarkTheme: Observable<boolean>;
-  update: Observable<boolean>;
-  
+
   constructor(public authService: AuthService, private themeService: ThemeService,
-    private overlayContainer: OverlayContainer) {
+    private overlayContainer: OverlayContainer, private checkForUpdateService: CheckForUpdateService) {
     
   }
 
   ngOnInit() {
+    if (environment.production)
+      this.checkForUpdateService.registerService();
+
     this.isDarkTheme = this.themeService.isDarkTheme;
     this.themeService.getThemeType();
-    this.update = this.themeService.appUpdate;
     this.isDarkTheme.subscribe((isDark) => {
       if (isDark) {
         this.overlayContainer.getContainerElement().classList.add('dark-theme');
@@ -35,11 +37,5 @@ export class AppComponent {
         this.overlayContainer.getContainerElement().classList.remove('dark-theme');
       }
     });
-  }
-  reload(){
-    debugger;
-    console.log('reloading')
-    this.themeService._update.next(false);
-    console.log(this.themeService.appUpdate);
   }
 }

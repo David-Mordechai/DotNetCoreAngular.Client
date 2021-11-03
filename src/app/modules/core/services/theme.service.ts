@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { SwUpdate } from '@angular/service-worker';
 
 @Injectable({
   providedIn: 'root'
@@ -11,21 +10,10 @@ export class ThemeService {
   private _darkTheme = new Subject<boolean>();
   isDarkTheme = this._darkTheme.asObservable();
 
-  _update = new Subject<boolean>();
-  appUpdate = this._update.asObservable();
-
   private URL: string = environment.baseApiUrl
 
-  constructor(private _http: HttpClient, private updates: SwUpdate) {
-    updates.available.subscribe(event => {
-      console.log('current version is', event.current);
-      console.log('available version is', event.available);
-      this._update.next(true);
-    });
-    updates.activated.subscribe(event => {
-      console.log('old version was', event.previous);
-      console.log('new version was', event.current);
-    });
+  constructor(private _http: HttpClient) {
+    
   }
 
   getThemeType() {

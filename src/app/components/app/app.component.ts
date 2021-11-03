@@ -22,8 +22,8 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    if (environment.production)
-      this.checkForUpdateService.registerService();
+    
+    this.checkForUpdateService.registerService();
 
     this.isDarkTheme = this.themeService.isDarkTheme;
     this.themeService.getThemeType();

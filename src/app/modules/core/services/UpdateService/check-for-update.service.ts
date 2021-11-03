@@ -1,31 +1,26 @@
-import { ApplicationRef, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { SwUpdate } from '@angular/service-worker';
-import { concat, interval } from 'rxjs';
-import { first } from 'rxjs/operators';
+import { interval } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CheckForUpdateService {
 
-  constructor(private appRef: ApplicationRef, private updates: SwUpdate) {
-    console.log("CheckForUpdateService constructor")
-  }
+  constructor(private updates: SwUpdate) { }
 
   registerService() {
-    console.log("CheckForUpdateService => registerService")
-    // Allow the app to stabilize first, before starting
-    // polling for updates with `interval()`.
-    const appIsStable$ = this.appRef.isStable.pipe(first(isStable => isStable === true));
-    const everyFiveMinutes$ = interval(1 * 60 * 1000);
-    const everyFiveMinutesOnceAppIsStable$ = concat(appIsStable$, everyFiveMinutes$);
+    if (environment.production){
+      const everyFiveMinutes$ = interval(5 * 60 * 1000);
 
-    everyFiveMinutesOnceAppIsStable$.subscribe(() => this.updates.checkForUpdate());
+      everyFiveMinutes$.subscribe(() => this.updates.checkForUpdate());
 
-    this.updates.available.subscribe(event => {
-      if (window.confirm("עוברים לגרסה חדשה!")) {
-        this.updates.activateUpdate().then(() => document.location.reload());
-      }
-    });
+      this.updates.available.subscribe(event => {
+        if (window.confirm("עוברים לגרסה חדשה!")) {
+          this.updates.activateUpdate().then(() => document.location.reload());
+        }
+      });
+    }
   }
 }
